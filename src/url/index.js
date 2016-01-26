@@ -1,4 +1,5 @@
 import compose from 'lodash/flowRight';
+import identity from 'lodash/identity';
 import isString from 'lodash/isString';
 import { parse, format } from 'url';
 
@@ -209,6 +210,6 @@ export const rebase = (rebase = {}) => {
     protocol(parsed.protocol + (parsed.slashes ? '//' : '')),
     auth(parsed.auth),
     host(parsed.host),
-    prepend(parsed.pathname),
+    parsed.pathname && prepend(parsed.pathname) || identity,
   );
 };
