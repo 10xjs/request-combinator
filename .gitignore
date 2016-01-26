@@ -1,5 +1,7 @@
 node_modules
 /coverage
+/request
+/url
 *.log
 *.map
 /*.js

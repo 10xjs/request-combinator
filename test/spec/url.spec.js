@@ -316,15 +316,22 @@ describe('url', () => {
     });
 
     it('should set the protocol property', () => {
-      expect(rebase('http://bar.com')(_url).protocol).to.equal('http:');
+      expect(rebase('mailto:foo@bar.com')(_url).protocol)
+        .to.equal('mailto:');
+      expect(rebase(url('mailto:foo@bar.com'))(_url)
+        .protocol).to.equal('mailto:');
     });
 
     it('should set the host property', () => {
       expect(rebase('http://bar.com:60')(_url).host).to.equal('bar.com:60');
+      expect(rebase(url('http://bar.com:60'))(_url).host)
+        .to.equal('bar.com:60');
     });
 
     it('should set the path property', () => {
       expect(rebase('http://bar.com/path')(_url).path)
+        .to.equal('/path/api/path?foo');
+      expect(rebase(url('http://bar.com/path'))(_url).path)
         .to.equal('/path/api/path?foo');
     });
   });

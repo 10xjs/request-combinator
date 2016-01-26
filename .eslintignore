@@ -1,2 +1,4 @@
 *.js
+url
+request
 node_modules
